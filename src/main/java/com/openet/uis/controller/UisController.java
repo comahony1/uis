@@ -47,7 +47,7 @@ public class UisController {
 	 * 
 	 */
 	
-	@RequestMapping(value = "/test", method = RequestMethod.GET)
+	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String getIndex(Locale locale, Model model) {
 		
 		Date date = new Date();
