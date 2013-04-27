@@ -86,8 +86,8 @@ public class UisController {
 	}
 	
 
-	@RequestMapping(value = "tag/addNode", method = RequestMethod.POST)
-	public @ResponseBody List<Status> addCustomer(@Valid NodeObject nodeObject, BindingResult result) {
+	@RequestMapping(value = "tag/addNode", method = RequestMethod.POST, produces="application/json")
+	public @ResponseBody List<Status> addCustomer(@Valid NodeObject nodeObject, BindingResult result,HttpServletResponse response) {
 		System.out.println("\nPOJO:" + nodeObject); 				
 		
 		List<Status> msg = new ArrayList<Status>();
@@ -107,7 +107,8 @@ public class UisController {
 			if(nodeObject.getTag_name().equals(seattle.getTag()))
 				seattle.setNode(nodeObject);			
 		}
-		return msg;		
+		response.setContentType("application/json");
+		return msg;
 	}
  
 		

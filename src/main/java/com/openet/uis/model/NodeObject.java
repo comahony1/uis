@@ -78,9 +78,9 @@ public class NodeObject {
 	public NodeObject(){}
 	
 	
-	@Override
-	public String toString()
-	{
-		return "[tag_name="+tag_name+",node_name="+node_name+",ip="+ip+",domain="+domain+"]";
-	}	
+//	@Override
+//	public String toString()
+//	{
+//		return "[tag_name="+tag_name+",node_name="+node_name+",ip="+ip+",domain="+domain+"]";
+//	}	
 }

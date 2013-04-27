@@ -21,28 +21,44 @@ $(document).ready(function(){
 			url: "tag/addNode",
 			data: data			
 		}).always(function(res){
+			console.log(jqXhr.responseText);
+			console.log(res.length);
+			console.log("============");
+			
+			
+			if(res[0].key != "Success") {
+				console.log("IT FAILED");
+			} else {
+				console.log("SUCCESS");
+			}
+			
+	
+			console.log("===========");
+			
 		    raw.html(jqXhr.responseText);
 		    var items = [];
 			items.push('<tr><td colspan="2" rowspan="1" width="100%" class="small_header"> Result' +  '</td></tr>');		    	
 		    $.each(res, function(key,value){
-				items.push('<tr>');		    	
+		    	$("#mytable > tbody").append("<tr>");
 		    	$.each(value, function(k,v){
+		    		console.log(v);
+		    		$("#mytable > tbody").append("<td>"+v+"</td>");
 		    		items.push('<td>'  + v + '</td>');
 		    	});
+		    	$("#mytable > tbody").append("</tr>");
 				items.push('</tr>');
 		    });
 			$('<table/>', {
 				'class': 'result_table',
 				html: items.join('')
-				}).appendTo(htm);				
+				}).appendTo(htm);	
+			$('#myModal').modal('toggle')
 		});
 	});
 	
 	$("#show_tags").button().click(function(){
-		rest.html("http://localhost:8080/UIS_Spring/tag");
-		raw.html("");
-		htm.html("");
 	    var jqXhr = $.getJSON( "tag",function(data){
+	    	console.log(data);
 		    raw.html(jqXhr.responseText);
 		    var items = [];
 		    $.each(data, function(key,value){
@@ -61,6 +77,13 @@ $(document).ready(function(){
 		raw.html("");
 		htm.html("");
 	    var jqXhr = $.getJSON( "nodes/tagName=Dublin",function(data){
+	    	console.log("START="+data);
+	    	 $.each(data, function(index, element) {
+	    	console.log(element.node_name);
+	    	 });
+	    	
+	    	console.log(jqXhr.responseText);
+	    	console.log(data);
 		    raw.html(jqXhr.responseText);
 		    var items = [];
 		    $.each(data, function(key,value){
