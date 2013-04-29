@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="false" %>
@@ -13,49 +14,42 @@
     <script src="resources/js/bootstrap.min.js"></script>
 	<script src="resources/js/main.js"></script>
 	
-	    <div class="hero-unit">
-    <h1>Usability</h1>
-    <p>A Usability POC</p>
-    <p>
-    <a href="#myModal" role="button" class="btn" data-toggle="modal">Add Node</a>
-    </p>
+	<div class="hero-unit">
+    	<h1>Usability</h1>
+    	<p>A Usability POC</p>
+    	<p>
+    		<a href="#myModal" role="button" class="btn" data-toggle="modal" id = "add_new_node">Add Node</a>
+    	</p>
+    </div>
+    
+    <div class="alert alert-error" id="nodeError"  style="display:none">
+    	<button class="close" onclick="$('#nodeError').hide();; return false;">×</button>
+     	<h4>Error!</h4> Failed to add node
+      	<div id="nodeErrorMsg"></div>
+    </div>
+    
+    <div class="alert alert-success" id="nodeSuccess" style="display:none">
+    	<button class="close" onclick="$('#nodeSuccess').hide();; return false;">×</button>
+    	<strong>Well done!</strong> You successfully added the node.
     </div>
     
 	<div class="container-fluid">
     	<div class="row-fluid">
-    		<div class="span2">
-    			<div class="btn-group btn-group-vertical">
-    				<button type="button" class="btn" id="show_tags">Show Tags</button>
-    				<button class="btn" id="show_dublin">Show Dublin Nodes</button>
-    				<button class="btn" id="show_reston">Show Reston Nodes</button>
-    				<button class="btn" id="show_seattle">Show Seattle Nodes</button>				
-    			</div>	
-    		</div>
-    		<div class="span10">
-    			<div>
-					<h4 class="small_header">HTTP REST API</h4>
-					<div id="rest_api"></div>
-				</div>
+    		
+    			
 				<div>
-					<h4 class="small_header">RAW JSON Output</h4>
-					<div id="json_raw"></div>
-				</div>
-				<div>
-					<h4 class="small_header">HTML Formatted Output</h4>
 					<div id="json_html"></div>
-					
-					    <table id = "mytable" class="table table-striped">
-					    	<thead>
-                				<tr>
-                  					<th>Location</th>
-									<th>Name</th>
-									<th>IP</th>
-									<th>Domain</th>
-              					</tr>
-              				</thead>
-              				<tbody></tbody>
+					<table id = "mytable" class="table table-striped">
+						<thead>
+                			<tr>
+                  				<th>Domain</th>
+								<th>Location</th>
+								<th>Name</th>
+								<th>IP</th>
+              				</tr>
+              			</thead>
+              			<tbody></tbody>
     					</table>
-				</div>	
     		</div>
     	</div>
     </div>

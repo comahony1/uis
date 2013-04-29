@@ -94,7 +94,8 @@ public class UisController {
 		
 		if(result.hasErrors()) {
 			for(FieldError fd:result.getFieldErrors())			
-				msg.add(new Status(fd.getField(),fd.getCode() + " => " + fd.getDefaultMessage()));			
+				//msg.add(new Status(fd.getField(),fd.getCode() + " => " + fd.getDefaultMessage()));			
+				msg.add(new Status(fd.getField(),fd.getCode()));
 		}		
 		else 
 		{

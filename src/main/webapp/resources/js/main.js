@@ -1,11 +1,12 @@
 $(document).ready(function(){
 	var htm = $("#json_html");
+	var nodeErrorMsg = $("#nodeErrorMsg");
 	var raw = $("#json_raw");
 	var rest = $("#rest_api");
 	$("#add_node_popup").hide();
 	
-	$("#add_new_node").button().click(function(){
-		$("#add_node_popup").dialog();		
+	$("#add_new_node").click(function(){
+		$('#add_node_form')[0].reset();
 	});
 	
 	$("#add_node_form").submit(function(event){
@@ -15,44 +16,57 @@ $(document).ready(function(){
 		event.preventDefault();
 		var data = $(this).serialize();
 
-		var jqXhr = $.ajax({
+		$.ajax({
 			type: "POST",
 			dataType: "json",
 			url: "tag/addNode",
 			data: data			
 		}).always(function(res){
-			console.log(jqXhr.responseText);
-			console.log(res.length);
-			console.log("============");
 			
 			
 			if(res[0].key != "Success") {
-				console.log("IT FAILED");
+					
+				 $("#nodeSuccess").hide();
+				 $("#nodeError").show();
+				 nodeErrorMsg.empty();
+				 var items = [];
+				 items.push("<ul>");
+				 $.each(res, function(index,element) {
+					 items.push("<li>"+ element.key + " = " + element.val+ "</li>");
+					 console.log(element.key);
+					 console.log(element.val);
+				 });
+				 items.push("</ul>");
+				 nodeErrorMsg.append(items.join(''));
+				 
 			} else {
-				console.log("SUCCESS");
+				 $("#nodeError").hide();
+				 $("#nodeSuccess").show();
+				
+				
+				var jqXhr1 = $.getJSON( "nodes/tagName=Dublin",function(data){
+					 console.log("GOT THE FOLLOWING DATA BACK "+jqXhr1.responseText);
+			    	 $.each(data, function(index, element) {
+			    	
+			    		 $("#mytable > tbody").append("<tr>");
+			    		 $.each(element, function(k,v){
+			    			 $("#mytable > tbody").append("<td>"+v+"</td>");
+			    			 
+			    		 });
+			    		 $("#mytable > tbody").append("</tr>");
+					});		    
+			    });				
 			}
-			
-	
-			console.log("===========");
-			
-		    raw.html(jqXhr.responseText);
+		    
 		    var items = [];
-			items.push('<tr><td colspan="2" rowspan="1" width="100%" class="small_header"> Result' +  '</td></tr>');		    	
 		    $.each(res, function(key,value){
-		    	$("#mytable > tbody").append("<tr>");
-		    	$.each(value, function(k,v){
-		    		console.log(v);
-		    		$("#mytable > tbody").append("<td>"+v+"</td>");
-		    		items.push('<td>'  + v + '</td>');
-		    	});
-		    	$("#mytable > tbody").append("</tr>");
-				items.push('</tr>');
+		    	
 		    });
 			$('<table/>', {
 				'class': 'result_table',
 				html: items.join('')
 				}).appendTo(htm);	
-			$('#myModal').modal('toggle')
+			$('#myModal').modal('toggle');
 		});
 	});
 	
