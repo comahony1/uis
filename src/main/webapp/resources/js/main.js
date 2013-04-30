@@ -5,6 +5,7 @@ $(document).ready(function(){
 	var rest = $("#rest_api");
 	
 	$("#add_new_node").click(function(){
+		$("#myModal .control-group").removeClass("error").addClass("success");
 		$('#add_node_form')[0].reset();
 	});
 	
@@ -22,6 +23,7 @@ $(document).ready(function(){
 			data: data			
 		}).always(function(res){
 			
+			$("#myModal .control-group").removeClass("error").addClass("success");
 			
 			if(res[0].key != "Success") {
 					
@@ -32,13 +34,13 @@ $(document).ready(function(){
 				 items.push("<ul>");
 				 $.each(res, function(index,element) {
 					 items.push("<li>"+ element.key + " = " + element.val+ "</li>");
-					 console.log(element.key);
-					 console.log(element.val);
+					 $("#"+element.key).removeClass("success").addClass("error");
 				 });
 				 items.push("</ul>");
 				 nodeErrorMsg.append(items.join(''));
 				 
 			} else {
+				$('#myModal').modal('toggle');
 				 $("#nodeError").hide();
 				 $("#nodeSuccess").show();
 				
@@ -65,7 +67,6 @@ $(document).ready(function(){
 				'class': 'result_table',
 				html: items.join('')
 				}).appendTo(htm);	
-			$('#myModal').modal('toggle');
 		});
 	});
 	

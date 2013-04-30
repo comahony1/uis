@@ -26,13 +26,13 @@
     </div>
     
     <div class="alert alert-error" id="nodeError"  style="display:none">
-    	<button class="close" onclick="$('#nodeError').hide();; return false;">×</button>
+    	<button class="close" onclick="$('#nodeError').hide();; return false;">ï¿½</button>
      	<h4>Error!</h4> Failed to add node
       	<div id="nodeErrorMsg"></div>
     </div>
     
     <div class="alert alert-success" id="nodeSuccess" style="display:none">
-    	<button class="close" onclick="$('#nodeSuccess').hide();; return false;">×</button>
+    	<button class="close" onclick="$('#nodeSuccess').hide();; return false;">ï¿½</button>
     	<strong>Well done!</strong> You successfully added the node.
     </div>
     
@@ -71,7 +71,7 @@
 		 <form class="form-horizontal" id="add_node_form">
     		
     		
-    		<div class="control-group">
+    		<div class="control-group error" id = "tag_name">
     			<label class="control-label" for="tag_name">Location</label>
     			<div class="controls">
     				<select name ="tag_name" placeholder="Location">
@@ -82,21 +82,21 @@
     			</div>
    			</div>
     
-  			<div class="control-group">
+  			<div class="control-group" id = "node_name">
     			<label class="control-label" for="node_name">Name</label>
     			<div class="controls">
     				<input type="text" name="node_name" placeholder="Name">
     			</div>
     		</div>
     
-    		<div class="control-group">
+    		<div class="control-group" id = "ip">
     			<label class="control-label" for="ip">IP</label>
     			<div class="controls">
     				<input type="text" name="ip" placeholder="ip">
     			</div>
     		</div>
     
-    		<div class="control-group">
+    		<div class="control-group" id = "domain">
     			<label class="control-label" for="domain">Domain</label>
     			<div class="controls">
     				<input type="text" name="domain" placeholder="Domain">
