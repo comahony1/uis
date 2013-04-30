@@ -3,7 +3,6 @@ $(document).ready(function(){
 	var nodeErrorMsg = $("#nodeErrorMsg");
 	var raw = $("#json_raw");
 	var rest = $("#rest_api");
-	$("#add_node_popup").hide();
 	
 	$("#add_new_node").click(function(){
 		$('#add_node_form')[0].reset();

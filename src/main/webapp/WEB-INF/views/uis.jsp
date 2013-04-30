@@ -20,6 +20,9 @@
     	<p>
     		<a href="#myModal" role="button" class="btn" data-toggle="modal" id = "add_new_node">Add Node</a>
     	</p>
+    	<p>
+    		<a href="#wizardModal" role="button" class="btn" data-toggle="modal" id = "add_cte_node">Add CTE</a>
+    	</p>
     </div>
     
     <div class="alert alert-error" id="nodeError"  style="display:none">
@@ -59,7 +62,7 @@
 		
 	<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-header">
-			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
 			<h3 id="myModalLabel">Modal header</h3>
 		</div>
 		<div class="modal-body">
@@ -111,7 +114,74 @@
 	</div>
 
 	
-	<br>
+	
+	
+	
+	<div id="wizardModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+			<h3>Modal header</h3>
+		</div>
+		<div class="modal-body">
+		 <div class="row show-grid">
+              <div class="span1">1</div>
+              <div class="span1">1</div>
+
+              <div class="span1">1</div>
+              <div class="span1">1</div>
+              <div class="span1">1</div>
+              <div class="span1">1</div>
+              <div class="span1">1</div>
+              <div class="span1">1</div>
+
+              <div class="span1">1</div>
+            </div>
+		 
+		 
+		 <form class="form-horizontal" id="add_node_wizard">
+    		
+    		
+    		<div class="control-group">
+    			<label class="control-label" for="tag_name">Location</label>
+    			<div class="controls">
+    				<select name ="tag_name" placeholder="Location">
+						<option>Dublin</option>
+						<option>Reston</option>
+						<option>Seattle</option>	
+					</select>
+    			</div>
+   			</div>
+    
+  			<div class="control-group">
+    			<label class="control-label" for="node_name">Name</label>
+    			<div class="controls">
+    				<input type="text" name="node_name" placeholder="Name">
+    			</div>
+    		</div>
+    
+    		<div class="control-group">
+    			<label class="control-label" for="ip">IP</label>
+    			<div class="controls">
+    				<input type="text" name="ip" placeholder="ip">
+    			</div>
+    		</div>
+    
+    		<div class="control-group">
+    			<label class="control-label" for="domain">Domain</label>
+    			<div class="controls">
+    				<input type="text" name="domain" placeholder="Domain">
+    			</div>
+    		</div>
+    		
+    		<div class="control-group">
+    			<div class="controls">
+    				<button type="submit" class="btn btn-primary" >Add</button>
+    			</div>
+    		</div>
+    		</form>	
+				
+		</div>		
+	</div>
 	
 	
 	
