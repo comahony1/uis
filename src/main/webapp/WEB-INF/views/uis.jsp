@@ -79,6 +79,7 @@
 						<option>Reston</option>
 						<option>Seattle</option>	
 					</select>
+					<span class="help-inline" id="tag_name_help"></span>
     			</div>
    			</div>
     
@@ -86,30 +87,34 @@
     			<label class="control-label" for="node_name">Name</label>
     			<div class="controls">
     				<input type="text" name="node_name" placeholder="Name">
+    				<span class="help-inline" id="node_name_help"></span>
     			</div>
+    			
     		</div>
     
     		<div class="control-group" id = "ip">
     			<label class="control-label" for="ip">IP</label>
     			<div class="controls">
     				<input type="text" name="ip" placeholder="ip">
-    			</div>
+    				<span class="help-inline" id="ip_help"></span>
+    			</div>    			
     		</div>
     
     		<div class="control-group" id = "domain">
     			<label class="control-label" for="domain">Domain</label>
     			<div class="controls">
     				<input type="text" name="domain" placeholder="Domain">
-    			</div>
+    				<span class="help-inline" id="domain_help"></span>
+    			</div>    			
     		</div>
     		
     		<div class="control-group">
     			<div class="controls">
     				<button type="submit" class="btn btn-primary" >Add</button>
-    			</div>
+    				<span class="help-inline"></span>
+    			</div> 			
     		</div>
-    		</form>	
-				
+    		</form>					
 		</div>		
 	</div>
 

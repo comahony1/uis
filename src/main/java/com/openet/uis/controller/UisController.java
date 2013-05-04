@@ -59,6 +59,11 @@ public class UisController {
 		
 		return "uis";
 	}
+	
+	@RequestMapping(value = "/ext", method = RequestMethod.GET)
+	public String getExt(Locale locale, Model model) {	
+		return "ext";
+	}
 
 	@RequestMapping(value = "/nodes/tagName={str}", method = RequestMethod.GET)	
 	public @ResponseBody  List<NodeObject> getNodes(

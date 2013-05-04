@@ -7,6 +7,7 @@ $(document).ready(function(){
 	
 	$("#add_new_node").click(function(){
 		$("#myModal .control-group").removeClass("error").addClass("success");
+		$("#myModal .help-inline").hide();
 		$('#add_node_form')[0].reset();
 	});
 	
@@ -60,6 +61,7 @@ $(document).ready(function(){
 			data: data			
 		}).always(function(res){
 			
+			$("#myModal .help-inline").hide();
 			$("#myModal .control-group").removeClass("error").addClass("success");
 			
 			if(res[0].key != "Success") {
@@ -72,6 +74,8 @@ $(document).ready(function(){
 				 $.each(res, function(index,element) {
 					 items.push("<li>"+ element.key + " = " + element.val+ "</li>");
 					 $("#"+element.key).removeClass("success").addClass("error");
+					 $("#"+element.key+" .help-inline").text(element.val);
+					 $("#"+element.key+" .help-inline").show();
 				 });
 				 items.push("</ul>");
 				 nodeErrorMsg.append(items.join(''));
