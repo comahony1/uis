@@ -3,13 +3,50 @@ $(document).ready(function(){
 	var nodeErrorMsg = $("#nodeErrorMsg");
 	var raw = $("#json_raw");
 	var rest = $("#rest_api");
+	var wizardPage =1;
 	
 	$("#add_new_node").click(function(){
 		$("#myModal .control-group").removeClass("error").addClass("success");
 		$('#add_node_form')[0].reset();
 	});
 	
+	$("#add_cte_node").click(function(){
+		console.log("Add cte node");
+		wizardPage=1;
+		$("#WizardTitle").text("Step "+wizardPage+" of 3...");
+		$("#p1").show();
+		$("#p2").hide();
+		$("#p3").hide();
+		$("#wizardSubmit").attr("disabled", true);
+		$("#wizardNext").attr("disabled", false);
+		$("#wizardModal").modal('toggle');
+		
+	});
+	
+	$("#wizardNext").click( function() {
+		if(wizardPage<3) {
+			wizardPage++;
+		}
+		if(wizardPage==3) {
+			$(this).attr("disabled", true);
+			$("#wizardSubmit").attr("disabled", false);
+		}
+		
+		
+		$("#p1").hide();
+		$("#p2").hide();
+		$("#p3").hide();
+		$("#WizardTitle").text("Step "+wizardPage+" of 3...");
+		$("#p"+wizardPage).show();
+	});
+	
+	$("#add_node_wizard").submit(function(event){
+		console.log("wizard form submitted");
+	});
+	
+	
 	$("#add_node_form").submit(function(event){
+		console.log("form submitted");
 		rest.html("http://localhost:8080/UIS_Spring/tag/addNode");
 		raw.html("");
 		htm.html("");

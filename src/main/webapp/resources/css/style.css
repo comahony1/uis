@@ -84,3 +84,12 @@
 	width:100%;
 	background-color:red;
 }
+.selectedPage
+{
+	opacity:0.3;
+	background-color:#CCFFCC;
+}
+.notSelectedPage
+{
+	background-color:#FFFFFF"
+}
